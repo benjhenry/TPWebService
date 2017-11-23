@@ -3,7 +3,11 @@ package fr.adaming.modele;
 import java.util.Calendar;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="cargaisons_aeriennes")
 public class CargaisonAerienne extends Cargaison {
 	private static final long serialVersionUID = 1L;
 
