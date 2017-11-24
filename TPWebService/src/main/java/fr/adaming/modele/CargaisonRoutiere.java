@@ -1,32 +1,29 @@
 package fr.adaming.modele;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cargaisons_routieres")
+@Table(name = "cargaisons_routieres")
 public class CargaisonRoutiere extends Cargaison {
 	private static final long serialVersionUID = 1L;
-	
+
 	// ========================= Attributs =========================
-	@Column(name="temperatureConservation_ca")
+	@Column(name = "temperatureConservation_cr")
 	private double temperatureConservation;
 
 	// ========================= Constructeurs =========================
 	public CargaisonRoutiere() {
 		super();
 	}
+
 	public CargaisonRoutiere(String reference, double distance,
-			Calendar dateLivraison, double temperatureConservation) {
+			Date dateLivraison, double temperatureConservation) {
 		super(reference, distance, dateLivraison);
-		this.temperatureConservation = temperatureConservation;
-	}
-	public CargaisonRoutiere(int id, String reference, double distance,
-			Calendar dateLivraison, double temperatureConservation) {
-		super(id, reference, distance, dateLivraison);
 		this.temperatureConservation = temperatureConservation;
 	}
 
@@ -34,6 +31,7 @@ public class CargaisonRoutiere extends Cargaison {
 	public double getTemperatureConservation() {
 		return temperatureConservation;
 	}
+
 	public void setTemperatureConservation(double temperatureConservation) {
 		this.temperatureConservation = temperatureConservation;
 	}
@@ -42,8 +40,8 @@ public class CargaisonRoutiere extends Cargaison {
 	@Override
 	public String toString() {
 		return "CargaisonRoutiere [temperatureConservation="
-				+ temperatureConservation + ", id=" + id + ", reference="
-				+ reference + ", distance=" + distance + ", dateLivraison="
-				+ dateLivraison + "]";
+				+ temperatureConservation + ", reference=" + reference
+				+ ", distance=" + distance + ", dateLivraison=" + dateLivraison
+				+ "]";
 	}
 }
