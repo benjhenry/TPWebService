@@ -35,7 +35,7 @@ public class DaoMarchandiseImpl implements IDaoMarchandise {
 		Session session = sessionFactory.getCurrentSession();
 		String request = "FROM Marchandise m";
 		Query query = session.createQuery(request);
-		return query.list();
+		return (List<Marchandise>) query.list();
 	}
 
 	@Override

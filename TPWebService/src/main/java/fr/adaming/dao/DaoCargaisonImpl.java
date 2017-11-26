@@ -50,7 +50,7 @@ public class DaoCargaisonImpl implements IDaoCargaison {
 			return new ArrayList<Cargaison>();
 		}
 		Query query = session.createQuery(request);
-		return query.list();
+		return (List<Cargaison>) query.list();
 	}
 
 	@Override

@@ -40,20 +40,20 @@ public class RESTMarchandise {
 		return serviceMarchandise.getAllMarchandises();
 	}
 
-//	@RequestMapping(value="/marchandise", method=RequestMethod.POST, produces="application/json", consumes="application/json")
-//	public Marchandise addMarchandise(@RequestBody Marchandise marchandise, @RequestParam("pReferenceCargaison") String reference) {
-//		Cargaison cargaison = serviceCargaison.getCargaisonByReference(reference);
-//		return serviceMarchandise.addMarchandise(marchandise, cargaison);
-//	}
-//
-//	@RequestMapping(value="/marchandise", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
-//	public Marchandise updateMarchandise(@RequestBody Marchandise marchandise, @RequestParam("pReferenceCargaison") String reference) {
-//		Cargaison cargaison = serviceCargaison.getCargaisonByReference(reference);
-//		return serviceMarchandise.updateMarchandise(marchandise, cargaison);
-//	}
-//
-//	@RequestMapping(value="/marchandise/{pId}", method=RequestMethod.DELETE)
-//	public void deleteMarchandise(@PathVariable("pId") long id) {
-//		serviceMarchandise.deleteMarchandise(id);
-//	}
+	@RequestMapping(value="/marchandise", method=RequestMethod.POST, produces="application/json", consumes="application/json")
+	public Marchandise addMarchandise(@RequestBody Marchandise marchandise, @RequestParam("pType") String type, @RequestParam("pReference") String reference) {
+		Cargaison cargaison = serviceCargaison.getCargaisonByReference(type, reference);
+		return serviceMarchandise.addMarchandise(marchandise, cargaison);
+	}
+
+	@RequestMapping(value="/marchandise", method=RequestMethod.PUT, produces="application/json", consumes="application/json")
+	public Marchandise updateMarchandise(@RequestBody Marchandise marchandise, @RequestParam("pType") String type, @RequestParam("pReference") String reference) {
+		Cargaison cargaison = serviceCargaison.getCargaisonByReference(type, reference);
+		return serviceMarchandise.updateMarchandise(marchandise, cargaison);
+	}
+
+	@RequestMapping(value="/marchandise/{pId}", method=RequestMethod.DELETE)
+	public void deleteMarchandise(@PathVariable("pId") long id) {
+		serviceMarchandise.deleteMarchandise(id);
+	}
 }
