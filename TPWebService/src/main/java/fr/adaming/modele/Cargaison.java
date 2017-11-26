@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="cargaisons")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -29,8 +31,9 @@ public abstract class Cargaison implements Serializable {
 	@Column(name = "dateLivraison_c")
 	@Temporal(TemporalType.DATE)
 	protected Date dateLivraison;
-//	@OneToMany(mappedBy = "cargaison")
-//	private List<Marchandise> marchandises;
+	@JsonIgnore
+	@OneToMany(mappedBy = "cargaison")
+	private List<Marchandise> marchandises;
 
 	// ========================= Constructeurs =========================
 	public Cargaison() {
@@ -62,12 +65,12 @@ public abstract class Cargaison implements Serializable {
 	public void setDateLivraison(Date dateLivraison) {
 		this.dateLivraison = dateLivraison;
 	}
-//	public List<Marchandise> getMarchandises() {
-//		return marchandises;
-//	}
-//	public void setMarchandises(List<Marchandise> marchandises) {
-//		this.marchandises = marchandises;
-//	}
+	public List<Marchandise> getMarchandises() {
+		return marchandises;
+	}
+	public void setMarchandises(List<Marchandise> marchandises) {
+		this.marchandises = marchandises;
+	}
 
 	// ========================= Methodes =========================
 	@Override

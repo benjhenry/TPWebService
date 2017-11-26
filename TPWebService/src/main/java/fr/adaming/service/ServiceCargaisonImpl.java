@@ -37,7 +37,7 @@ public class ServiceCargaisonImpl implements IServiceCargaison {
 
 	@Override
 	public Cargaison updateCargaison(Cargaison cargaison) {
-		return daoCargaison.addCargaison( cargaison);
+		return daoCargaison.updateCargaison(cargaison);
 	}
 
 	@Override
