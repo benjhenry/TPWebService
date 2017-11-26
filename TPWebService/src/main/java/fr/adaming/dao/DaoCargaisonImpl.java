@@ -2,9 +2,12 @@ package fr.adaming.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import fr.adaming.modele.Cargaison;
 
 @Repository
@@ -19,30 +22,39 @@ public class DaoCargaisonImpl implements IDaoCargaison {
 
 	@Override
 	public Cargaison getCargaisonByReference(String reference) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		String request = "FROM Cargaison c WHERE c.reference=:pReference";
+		Query query = session.createQuery(request);
+		query.setParameter("pReference", reference);
+		return (Cargaison) query.uniqueResult();
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Cargaison> getAllCargaisons() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		String request = "FROM Cargaison c";
+		Query query = session.createQuery(request);
+		return query.list();
 	}
 
 	@Override
 	public Cargaison addCargaison(Cargaison cargaison) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		session.save(cargaison);
+		return cargaison;
 	}
 
 	@Override
 	public Cargaison updateCargaison(Cargaison cargaison) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(cargaison);
+		return cargaison;
 	}
 
 	@Override
 	public void deleteCargaison(String reference) {
-		// TODO Auto-generated method stub
+		Session session = sessionFactory.getCurrentSession();
+		session.delete(this.getCargaisonByReference(reference));
 	}
 }
