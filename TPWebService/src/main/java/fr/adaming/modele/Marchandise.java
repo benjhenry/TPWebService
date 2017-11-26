@@ -26,9 +26,9 @@ public class Marchandise implements Serializable {
 	private double poids;
 	@Column(name="volume_m")
 	private double volume;
-	@ManyToOne
-	@JoinColumn(name="reference_c", referencedColumnName="reference_c")
-	private Cargaison cargaison;
+//	@ManyToOne
+//	@JoinColumn(name="reference_c", referencedColumnName="reference_c")
+//	private Cargaison cargaison;
 	
 	// ========================= Constructeurs =========================
 	public Marchandise() {
@@ -73,12 +73,12 @@ public class Marchandise implements Serializable {
 	public void setVolume(double volume) {
 		this.volume = volume;
 	}
-	public Cargaison getCargaison() {
-		return cargaison;
-	}
-	public void setCargaison(Cargaison cargaison) {
-		this.cargaison = cargaison;
-	}
+//	public Cargaison getCargaison() {
+//		return cargaison;
+//	}
+//	public void setCargaison(Cargaison cargaison) {
+//		this.cargaison = cargaison;
+//	}
 	
 	// ========================= Methodes =========================
 	@Override

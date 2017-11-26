@@ -1,5 +1,6 @@
 package fr.adaming.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -21,9 +22,16 @@ public class DaoCargaisonImpl implements IDaoCargaison {
 	
 
 	@Override
-	public Cargaison getCargaisonByReference(String reference) {
+	public Cargaison getCargaisonByReference(String type, String reference) {
 		Session session = sessionFactory.getCurrentSession();
-		String request = "FROM Cargaison c WHERE c.reference=:pReference";
+		String request;
+		if (type.equals("a")) {
+			request = "FROM CargaisonAerienne c WHERE c.reference=:pReference";
+		} else if (type.equals("r")) {
+			request = "FROM CargaisonRoutiere c WHERE c.reference=:pReference";
+		} else  {
+			return null;
+		}
 		Query query = session.createQuery(request);
 		query.setParameter("pReference", reference);
 		return (Cargaison) query.uniqueResult();
@@ -31,9 +39,16 @@ public class DaoCargaisonImpl implements IDaoCargaison {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Cargaison> getAllCargaisons() {
+	public List<Cargaison> getAllCargaisons(String type) {
 		Session session = sessionFactory.getCurrentSession();
-		String request = "FROM Cargaison c";
+		String request;
+		if (type.equals("a")) {
+			request = "FROM CargaisonAerienne c";
+		} else if (type.equals("r")) {
+			request = "FROM CargaisonRoutiere c";
+		} else  {
+			return new ArrayList<Cargaison>();
+		}
 		Query query = session.createQuery(request);
 		return query.list();
 	}
@@ -53,8 +68,8 @@ public class DaoCargaisonImpl implements IDaoCargaison {
 	}
 
 	@Override
-	public void deleteCargaison(String reference) {
+	public void deleteCargaison(String type, String reference) {
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(this.getCargaisonByReference(reference));
+		session.delete(this.getCargaisonByReference(type, reference));
 	}
 }

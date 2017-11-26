@@ -29,15 +29,14 @@ public abstract class Cargaison implements Serializable {
 	@Column(name = "dateLivraison_c")
 	@Temporal(TemporalType.DATE)
 	protected Date dateLivraison;
-	@OneToMany(mappedBy = "cargaison")
-	private List<Marchandise> marchandises;
+//	@OneToMany(mappedBy = "cargaison")
+//	private List<Marchandise> marchandises;
 
 	// ========================= Constructeurs =========================
 	public Cargaison() {
 		super();
 	}
-	public Cargaison(String reference, double distance,
-			Date dateLivraison) {
+	public Cargaison(String reference, double distance, Date dateLivraison) {
 		super();
 		this.reference = reference;
 		this.distance = distance;
@@ -48,34 +47,27 @@ public abstract class Cargaison implements Serializable {
 	public String getReference() {
 		return reference;
 	}
-
 	public void setReference(String reference) {
 		this.reference = reference;
 	}
-
 	public double getDistance() {
 		return distance;
 	}
-
 	public void setDistance(double distance) {
 		this.distance = distance;
 	}
-
 	public Date getDateLivraison() {
 		return dateLivraison;
 	}
-
 	public void setDateLivraison(Date dateLivraison) {
 		this.dateLivraison = dateLivraison;
 	}
-
-	public List<Marchandise> getMarchandises() {
-		return marchandises;
-	}
-
-	public void setMarchandises(List<Marchandise> marchandises) {
-		this.marchandises = marchandises;
-	}
+//	public List<Marchandise> getMarchandises() {
+//		return marchandises;
+//	}
+//	public void setMarchandises(List<Marchandise> marchandises) {
+//		this.marchandises = marchandises;
+//	}
 
 	// ========================= Methodes =========================
 	@Override

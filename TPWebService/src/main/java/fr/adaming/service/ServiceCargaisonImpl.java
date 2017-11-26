@@ -21,13 +21,13 @@ public class ServiceCargaisonImpl implements IServiceCargaison {
 	
 
 	@Override
-	public Cargaison getCargaisonByReference(String reference) {
-		return daoCargaison.getCargaisonByReference(reference);
+	public Cargaison getCargaisonByReference(String type, String reference) {
+		return daoCargaison.getCargaisonByReference(type, reference);
 	}
 
 	@Override
-	public List<Cargaison> getAllCargaisons() {
-		return daoCargaison.getAllCargaisons();
+	public List<Cargaison> getAllCargaisons(String type) {
+		return daoCargaison.getAllCargaisons(type);
 	}
 
 	@Override
@@ -37,11 +37,11 @@ public class ServiceCargaisonImpl implements IServiceCargaison {
 
 	@Override
 	public Cargaison updateCargaison(Cargaison cargaison) {
-		return daoCargaison.addCargaison(cargaison);
+		return daoCargaison.addCargaison( cargaison);
 	}
 
 	@Override
-	public void deleteCargaison(String reference) {
-		daoCargaison.deleteCargaison(reference);
+	public void deleteCargaison(String type, String reference) {
+		daoCargaison.deleteCargaison(type, reference);
 	}
 }

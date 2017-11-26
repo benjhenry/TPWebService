@@ -32,13 +32,13 @@ public class ServiceMarchandiseImpl implements IServiceMarchandise {
 
 	@Override
 	public Marchandise addMarchandise(Marchandise marchandise, Cargaison cargaison) {
-		marchandise.setCargaison(cargaison);
+//		marchandise.setCargaison(cargaison);
 		return daoMarchandise.addMarchandise(marchandise);
 	}
 
 	@Override
 	public Marchandise updateMarchandise(Marchandise marchandise, Cargaison cargaison) {
-		marchandise.setCargaison(cargaison);
+//		marchandise.setCargaison(cargaison);
 		return daoMarchandise.updateMarchandise(marchandise);
 	}
 
